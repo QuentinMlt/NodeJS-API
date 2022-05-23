@@ -1,14 +1,9 @@
 const request = require("supertest");
 const db = require("../Tache");
 const app = require("../app");
-const mapToObj = (m) => {
-  return Array.from(m).reduce((obj, [key, value]) => {
-    obj[key] = value;
-    return obj;
-  }, {});
-};
 
-describe("Mon API CRUD", () => {
+
+describe("Mon API CRUD CONTROLE 2", () => {
 
   beforeEach(()=>{
     db['memoryDb'] = new Map();
@@ -25,7 +20,13 @@ describe("Mon API CRUD", () => {
       .expect("content-type", /json/);
   });
 
-
+  it("GET /api/taches/id retourne la tache avec l'id", async () => {
+    const tacheId = 1;
+    const res = await request(app)
+      .get("/api/taches/" + tacheId)
+      .expect(200)
+      .expect("content-type", /json/);
+  });
  
   test.each([
     {description: "Description 1", faite: true},
