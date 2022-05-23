@@ -11,6 +11,16 @@ class Collection{
     getAll() {
         return Object.fromEntries(this.memoryDb);
     }
+    getOne(id) {
+      if (this.exists(id)) {
+        return this.memoryDb.get(id);
+      } else {
+        throw new Error(`Key : ${id} doesn't exists`);
+      }
+    }
+    exists(id) {
+      return this.memoryDb.has(id);
+    }
 }
 
 module.exports = Collection;
