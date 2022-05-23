@@ -28,5 +28,14 @@ describe("Mon API CRUD", () => {
 
 
  
-
+  test.each([
+    {description: "Description 1", faite: true},
+    {description: "Description 2", faite: false},
+    {description: "Description 3", faite: true}
+  ])('envoie des tests dajout', async (objectTest) => {
+    const result = await request(app)
+    .post('/api/taches/add')
+    .send(objectTest)
+    .expect(201);
+  });
 });
