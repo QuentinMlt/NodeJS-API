@@ -8,6 +8,9 @@ class Collection{
         this.memoryDb.set(this.id, obj);
         return { id: this.id++, inserted: obj };
       }
+    getAll() {
+        return Object.fromEntries(this.memoryDb);
+    }
 }
 
 module.exports = Collection;
