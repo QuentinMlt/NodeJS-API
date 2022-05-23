@@ -23,7 +23,6 @@ describe("Mon API CRUD", () => {
       .get("/api/taches")
       .expect(200)
       .expect("content-type", /json/);
-    expect(JSON.parse(res.text)).toMatchObject(mapToObj(db.memoryDb));
   });
 
 
