@@ -6,7 +6,7 @@ const Joi = require("joi");
 
 const Collection = require("./Tache.js");
 const Taches = new Collection("Taches");
-
+Taches.insertOne({description: "test récuperer id", faite: false})
 
 app.use(express.json());
 
@@ -16,6 +16,11 @@ app.get('/', (req, res) => {
 
 app.get("/api/taches", (req, res) => {
     res.json(Taches.getAll());
+  });
+
+app.get("/api/taches/:id", (req, res) => {
+  console.log(req.params.id)
+    res.json(Taches.getOne(req.params.id));
   });
 
   app.post('/api/taches/add', (req, res) => {
